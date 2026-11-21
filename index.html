@@ -2,132 +2,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zypher1x | Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zypher1x | Developer</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            background: #080808;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+body {
+    background: #080808;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
 
-        .container {
-            max-width: 650px;
-            padding: 30px;
-        }
+/* NAVBAR */
 
-        h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 10%;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: rgba(8,8,8,.95);
+    z-index: 10;
+}
 
-        h1 span {
-            color: #888;
-        }
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-        .subtitle {
-            color: #999;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+.logo span {
+    color: #777;
+}
 
-        p {
-            color: #bbb;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    transition: .3s;
+}
 
-        .skills {
-            margin: 30px 0;
-            color: #888;
-            word-spacing: 12px;
-        }
+nav a:hover {
+    color: white;
+}
 
-        .buttons {
-            margin-top: 30px;
-        }
+/* HERO */
 
-        a {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            border: 1px solid #555;
-            padding: 12px 25px;
-            margin: 8px;
-            transition: 0.3s;
-        }
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    overflow: hidden;
+}
 
-        a:hover {
-            background: white;
-            color: black;
-            border-color: white;
-        }
+.hero h1 {
+    font-size: clamp(45px, 9vw, 90px);
+    letter-spacing: 5px;
+    white-space: nowrap;
+}
 
-        footer {
-            margin-top: 60px;
-            color: #555;
-            font-size: 13px;
-        }
-    </style>
+.hero h1 .letter {
+    display: inline-block;
+    opacity: 0;
+    animation: slideIn 0.7s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.hero h1 .letter:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.hero h1 .letter:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.hero h1 .letter:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.hero h1 .letter:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.hero h1 .letter:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+.hero h1 .letter:nth-child(6) {
+    animation-delay: 0.85s;
+}
+
+.hero h1 .letter:nth-child(7) {
+    animation-delay: 1s;
+    color: #777;
+}
+
+.hero h1 .letter:nth-child(8) {
+    animation-delay: 1.15s;
+    color: #777;
+}
+
+.hero h2 {
+    color: #888;
+    font-size: 20px;
+    margin: 20px 0;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.5s forwards;
+}
+
+.hero p {
+    color: #aaa;
+    max-width: 550px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.7s forwards;
+}
+
+.button {
+    display: inline-block;
+    padding: 13px 28px;
+    margin-top: 30px;
+    border: 1px solid #555;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.9s forwards;
+}
+
+.button:hover {
+    background: white;
+    color: black;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 10%;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.section-title span {
+    color: #777;
+}
+
+/* ABOUT */
+
+.about {
+    background: #0d0d0d;
+    text-align: center;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #aaa;
+    line-height: 2;
+}
+
+/* PROJECTS */
+
+.projects {
+    text-align: center;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #252525;
+    padding: 30px;
+    text-align: left;
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    border-color: #777;
+}
+
+.project-card h3 {
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #888;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.project-card a {
+    display: inline-block;
+    color: white;
+    margin-top: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #777;
+    padding-bottom: 5px;
+}
+
+/* TECH STACK */
+
+.tech {
+    background: #0d0d0d;
+    text-align: center;
+}
+
+.tech-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tech-item {
+    padding: 15px 25px;
+    border: 1px solid #333;
+    color: #aaa;
+    transition: .3s;
+}
+
+.tech-item:hover {
+    background: white;
+    color: black;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #222;
+    color: #666;
+    font-size: 13px;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100vw);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    nav {
+        padding: 20px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    section {
+        padding: 75px 7%;
+    }
+
+    .hero h2 {
+        font-size: 17px;
+    }
+
+    .hero h1 {
+        letter-spacing: 2px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<!-- NAVBAR -->
 
-        <h1>ZYPHER<span>1X</span></h1>
+<nav>
+    <div class="logo">ZYPHER<span>1X</span></div>
 
-        <div class="subtitle">
-            Beginner Developer | Python Programmer
-        </div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#tech">Skills</a>
+    </div>
+</nav>
 
-        <p>
-            Hi, I'm Zypher1x.
-        </p>
+<!-- HERO -->
 
-        <p>
-            I'm a beginner programmer passionate about
-            software development and technology.
-        </p>
+<div class="hero">
 
-        <p>
-            Currently focused on learning Python, building
-            practical projects and improving my problem-solving skills.
-        </p>
+    <h1>
+        <span class="letter">Z</span><span class="letter">Y</span><span class="letter">P</span><span class="letter">H</span><span class="letter">E</span><span class="letter">R</span><span class="letter">1</span><span class="letter">X</span>
+    </h1>
 
-        <div class="skills">
-            Python | Git | GitHub | Programming
-        </div>
+    <h2>Developer in progress.</h2>
 
-        <div class="buttons">
-            <a href="https://github.com/Zypher1x" target="_blank">
-                GitHub
+    <p>
+        Passionate about programming, technology
+        and building things from scratch.
+        Currently focused on Python development
+        and improving my skills.
+    </p>
+
+    <a class="button" href="#projects">
+        Explore My Projects
+    </a>
+
+</div>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        ABOUT <span>ME</span>
+    </h2>
+
+    <p>
+        Hi, I'm Zypher1x.
+
+        I'm a beginner programmer passionate about
+        software development and technology.
+
+        Currently focused on learning Python,
+        building practical projects and strengthening
+        my problem-solving skills.
+
+        I believe in learning through practice,
+        exploring new ideas and improving with
+        every project.
+    </p>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+
+    <h2 class="section-title">
+        MY <span>PROJECTS</span>
+    </h2>
+
+    <div class="project-container">
+
+        <div class="project-card">
+            <h3>Product Tracker</h3>
+
+            <p>
+                A Python-based product tracking system
+                with stock and price management.
+            </p>
+
+            <a href="https://github.com/Zypher1x"
+               target="_blank">
+                View Project →
             </a>
+        </div>
 
-            <a href="mailto:zayfer1x@gmail.com">
-                Contact
+        <div class="project-card">
+            <h3>Python Projects</h3>
+
+            <p>
+                Small Python applications created
+                to improve programming skills.
+            </p>
+
+            <a href="https://github.com/Zypher1x"
+               target="_blank">
+                View Projects →
             </a>
         </div>
 
-        <footer>
-            © 2026 Zypher1x. All rights reserved.
-        </footer>
+        <div class="project-card">
+            <h3>Coming Soon</h3>
+
+            <p>
+                More projects and ideas
+                are currently in development.
+            </p>
+
+            <a href="https://github.com/Zypher1x"
+               target="_blank">
+                GitHub →
+            </a>
+        </div>
 
     </div>
+
+</section>
+
+<!-- TECH STACK -->
+
+<section class="tech" id="tech">
+
+    <h2 class="section-title">
+        TECH <span>STACK</span>
+    </h2>
+
+    <div class="tech-container">
+
+        <div class="tech-item">Python</div>
+        <div class="tech-item">HTML</div>
+        <div class="tech-item">CSS</div>
+        <div class="tech-item">Git</div>
+        <div class="tech-item">GitHub</div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Zypher1x. All rights reserved.
+</footer>
 
 </body>
 </html>
