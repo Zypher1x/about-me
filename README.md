@@ -1,2 +1,2 @@
 # |My Web Site|
-https://zypher1x.github.io/web-site/
+https://zypher1x.github.io/about-me/
